@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Stack, useRouter } from "expo-router";
 import * as React from "react";
+import { useSession } from "../context/ctx";
 import { Text } from "react-native";
 import { Search } from "lucide-react-native";
 import { COLORS, icons, images, SIZES } from "../constants";
@@ -17,24 +18,21 @@ import styles from "../styles/landingStyles";
 import { ScreenHeaderBtn } from "../components";
 import axios from "axios";
 import { useRootNavigationState } from "expo-router";
+
 const Home = () => {
   const router = useRouter();
   const [username, setusername] = useState("");
   const [Password, setPassword] = useState("");
-
+  const { signIn } = useSession();
     
-
-  const handleSigin = async () => {
-    const url = process.env.EXPO_PUBLIC_SERVER_URL + "/login";
-
-    const res = await axios.post(url, {
-      username: username,
-      password: Password,
-    });
-
-    if (res.statusText === "Created") {
-      // const storeRefreshToken = async (token) =>setItemAsync("username", username);
-      router.push("/home");
+  const handleSignIn2 = async () => {
+    try {
+     await signIn({ username: username, Password: Password });
+     
+   
+    } catch (error) {
+      // Handle errors if signIn fails
+      console.error("Sign-in failed:", error);
     }
   };
 
@@ -75,10 +73,7 @@ const Home = () => {
           </View>
         </View>
         <View style={styles.footerContainer}>
-          <TouchableOpacity
-            style={styles.paginationButton}
-            onPress={handleSigin}
-          >
+          <TouchableOpacity style={styles.paginationButton} onPress={handleSignIn2}>
             <Text className="text-white text-lg">Login</Text>
           </TouchableOpacity>
         </View>

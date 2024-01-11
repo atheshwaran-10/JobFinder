@@ -8,11 +8,14 @@
     "slug": "jobsift",
     "extra": {
       "eas": {
-        "projectId": "2da5b8e6-5930-4572-8e41-acd57b8e8aaf"
+        "projectId": "24f32800-291e-45bc-989f-c787372bd67f"
       }
     },
     "android": {
-      "package": "com.atheshwaran.jobsift"
+      "package": "com.atheshwaran.jobsift",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "plugins": [
       [

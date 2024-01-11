@@ -43,8 +43,6 @@ async function getUserData(req){
 }
 
 
-
-
 app.post('/register', async (req,res) => {
   const { username, password, name, job, imageUrl } = req.body;
   try {
@@ -90,6 +88,7 @@ app.post('/register', async (req,res) => {
 app.post('/login', async(req,res)=>{
   const {username,password}=req.body;
   const found=await User.findOne({username});
+  console.log(found);
   if(found){
     const check=bcrypt.compareSync(password,found.password);
     if(check)

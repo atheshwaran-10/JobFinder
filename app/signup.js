@@ -14,7 +14,7 @@ import { Search } from "lucide-react-native";
 import { COLORS, icons, images, SIZES } from "../constants";
 import { TextInput } from "react-native";
 import styles from "../styles/landingStyles";
-import ImagePickerExample from "../components/ImagePicker";
+//import ImagePickerExample from "../components/ImagePicker";
 import axios from "axios";
 
 const Home = () => {
@@ -37,7 +37,7 @@ const Home = () => {
     if(res.statusText==="Created")
     {
       // const storeRefreshToken = async (token) =>setItemAsync("username", username);
-      router.push("/home")
+      router.push("/signin")
     }
     else
     {
@@ -62,7 +62,7 @@ const Home = () => {
           <Search color="white" size={148} />
           <Text style={styles.paginationText}>JobFinder</Text>
         </View>
-        <ImagePickerExample image={image} setImage={setImage} />
+        {/* <ImagePickerExample image={image} setImage={setImage} /> */}
         <View style={styles.searchContainer}>
           <View style={styles.searchWrapper}>
             <TextInput

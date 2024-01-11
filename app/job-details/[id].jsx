@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { Stack, useRouter, useSearchParams } from "expo-router";
 import { useCallback, useState } from "react";
@@ -84,7 +83,11 @@ const JobDetails = () => {
             />
           ),
           headerRight: () => (
-            <ScreenHeaderBtn iconUrl={icons.share} dimension="60%" handlePress={undefined} />
+            <ScreenHeaderBtn
+              iconUrl={icons.share}
+              dimension="60%"
+              handlePress={undefined}
+            />
           ),
           headerTitle: "",
         }}

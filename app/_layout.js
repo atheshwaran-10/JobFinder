@@ -1,5 +1,7 @@
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
+import { Slot } from "expo-router";
+import {SessionProvider}  from "../context/ctx";
 // import * as SplashScreen from "expo-splash-screen";
 
 // SplashScreen.preventAutoHideAsync();
@@ -21,9 +23,11 @@ const Layout = () => {
   }
 
   return (
-    <Stack initialRouteName="signin">
-      <Stack.Screen name="signin" />
-    </Stack>
+    <SessionProvider>
+      <Stack initialRouteName="signin">
+        <Slot />
+      </Stack>
+    </SessionProvider>
   );
 };
 

@@ -10,10 +10,13 @@ import {
   ScreenHeaderBtn,
   Welcome,
 } from "../components";
+import { useSession } from "../context/ctx";
 
 const Home = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
+  const { signOut, session } = useSession();
+  
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -22,10 +25,18 @@ const Home = () => {
           headerStyle: { backgroundColor: COLORS.lightWhite },
           headerShadowVisible: false,
           headerLeft: () => (
-            <ScreenHeaderBtn iconUrl={icons.menu} dimension='60%' handlePress={undefined} />
+            <ScreenHeaderBtn
+              iconUrl={icons.menu}
+              dimension="60%"
+              handlePress={undefined}
+            />
           ),
           headerRight: () => (
-            <ScreenHeaderBtn iconUrl={images.profile} dimension='100%' handlePress={undefined} />
+            <ScreenHeaderBtn
+              iconUrl={ null}
+              dimension="100%"
+              handlePress={() => signOut()}
+            />
           ),
           headerTitle: "",
         }}
@@ -43,7 +54,7 @@ const Home = () => {
             setSearchTerm={setSearchTerm}
             handleClick={() => {
               if (searchTerm) {
-                router.push(`/search/${searchTerm}`)
+                router.push(`/search/${searchTerm}`);
               }
             }}
           />
