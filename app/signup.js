@@ -7,14 +7,13 @@ import {
   Image,
 } from "react-native";
 import { Stack, useRouter } from "expo-router";
-import { setItemAsync, getItemAsync, deleteItemAsync } from "expo-secure-store";
 import * as React from "react";
 import { Text } from "react-native";
 import { Search } from "lucide-react-native";
 import { COLORS, icons, images, SIZES } from "../constants";
 import { TextInput } from "react-native";
 import styles from "../styles/landingStyles";
-//import ImagePickerExample from "../components/ImagePicker";
+import ImagePickerExample from "../components/ImagePicker";
 import axios from "axios";
 
 const Home = () => {
@@ -34,9 +33,8 @@ const Home = () => {
       name: name,
       imageUrl: image,
     });
-    if(res.statusText==="Created")
+    if(res.status===201)
     {
-      // const storeRefreshToken = async (token) =>setItemAsync("username", username);
       router.push("/signin")
     }
     else
@@ -48,10 +46,10 @@ const Home = () => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.orange }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: COLORS.orange },
+          headerStyle: { backgroundColor: COLORS.white },
           headerShadowVisible: false,
           headerTitle: "",
         }}
@@ -59,10 +57,10 @@ const Home = () => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.paginationTextBox}>
-          <Search color="white" size={148} />
+          <Search color="#FF7754" size={148} />
           <Text style={styles.paginationText}>JobFinder</Text>
         </View>
-        {/* <ImagePickerExample image={image} setImage={setImage} /> */}
+        <ImagePickerExample image={image} setImage={setImage} />
         <View style={styles.searchContainer}>
           <View style={styles.searchWrapper}>
             <TextInput

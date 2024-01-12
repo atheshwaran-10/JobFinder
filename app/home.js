@@ -15,8 +15,9 @@ import { useSession } from "../context/ctx";
 const Home = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
-  const { signOut, session } = useSession();
-  
+  const { signOut, session,checkSession } = useSession();
+  const ses=(session)
+  console.log(ses.user.imageUrl);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -33,7 +34,7 @@ const Home = () => {
           ),
           headerRight: () => (
             <ScreenHeaderBtn
-              iconUrl={ null}
+              iconUrl={ses.user.imageUrl}
               dimension="100%"
               handlePress={() => signOut()}
             />

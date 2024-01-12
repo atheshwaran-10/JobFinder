@@ -12,7 +12,6 @@ import { useSession } from "../context/ctx";
 import { Text } from "react-native";
 import { Search } from "lucide-react-native";
 import { COLORS, icons, images, SIZES } from "../constants";
-import { setItemAsync, getItemAsync, deleteItemAsync } from "expo-secure-store";
 import { TextInput } from "react-native";
 import styles from "../styles/landingStyles";
 import { ScreenHeaderBtn } from "../components";
@@ -23,7 +22,10 @@ const Home = () => {
   const router = useRouter();
   const [username, setusername] = useState("");
   const [Password, setPassword] = useState("");
-  const { signIn } = useSession();
+  const { signIn,session } = useSession();
+
+  if(session!==null)  
+    router.push("/home")
     
   const handleSignIn2 = async () => {
     try {
@@ -37,10 +39,10 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.orange }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: COLORS.orange },
+          headerStyle: { backgroundColor: COLORS.white },
           headerShadowVisible: false,
           headerTitle: "",
         }}
@@ -48,7 +50,7 @@ const Home = () => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.paginationTextBox}>
-          <Search color="white" size={148} />
+          <Search color="#FF7754" size={148} />
           <Text style={styles.paginationText}>JobFinder</Text>
         </View>
         <View style={styles.searchContainer}>

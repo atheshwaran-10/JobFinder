@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   btnImg: (dimension) => ({
     width: dimension,
     height: dimension,
-    borderRadius: "100%",
+    borderRadius: 100,
   }),
 });
 
